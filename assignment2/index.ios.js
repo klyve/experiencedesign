@@ -11,8 +11,12 @@ import {
   Text,
   View
 } from 'react-native';
+import SideMenu from 'react-native-side-menu';
+//const SideMenu = require('react-native-side-menu');
 
-class assignment2 extends Component {
+
+
+class ContentView extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -24,12 +28,24 @@ class assignment2 extends Component {
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          Cmd+Control+D for dev menu
         </Text>
       </View>
     );
   }
 }
+const menu = <SideMenu navigator={navigator}/>;
+
+class assignment2 extends Component {
+  render() {
+    return (
+      <SideMenu menu={menu}>
+        <ContentView/>
+      </SideMenu>
+    );
+  }
+}
+
 
 const styles = StyleSheet.create({
   container: {
