@@ -9,19 +9,27 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
-import SideMenu from 'react-native-side-menu';
-//const SideMenu = require('react-native-side-menu');
+
+import { SideMenu, List, ListItem, Button, SocialIcon } from 'react-native-elements'
 
 
 
-class ContentView extends Component {
+
+
+
+
+class App extends Component {
+
+
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to React!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
@@ -30,21 +38,116 @@ class ContentView extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+Control+D for dev menu
         </Text>
+        <SocialIcon
+          title='Sign In With Facebook'
+          button
+          type='facebook'
+        />
+
       </View>
     );
   }
 }
-const menu = <SideMenu navigator={navigator}/>;
+const list = [
+  {
+    name: 'Amy Farha',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President'
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman'
+  },
+]
+
 
 class assignment2 extends Component {
-  render() {
+
+
+  constructor () {
+    super()
+    this.state = { toggled: false }
+  }
+
+  toggleSideMenu () {
+    this.setState({
+      toggled: !this.state.toggled
+    })
+  }
+
+  render () {
+    // SideMenu takes a React Native element as a prop for the actual Side Menu
+    const MenuComponent = (
+      <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
+        <List containerStyle={{marginBottom: 20}}>
+        {
+          list.map((item, i) => (
+            <ListItem
+              roundAvatar
+              onPress={() => console.log('something')}
+              avatar={{uri:item.avatar_url}}
+              key={i}
+              title={item.name}
+              subtitle={item.subtitle} />
+          ))
+        }
+        </List>
+      </View>
+    )
     return (
-      <SideMenu menu={menu}>
-        <ContentView/>
+      <SideMenu
+        MenuComponent={MenuComponent}
+        toggled={this.state.toggled}>
+        <App />
       </SideMenu>
-    );
+    )
   }
 }
+
+
+
+// class assignment2 extends Component {
+//   constructor () {
+//     super()
+//     this.state = { toggled: false }
+//   }
+//
+//   toggleSideMenu () {
+//     this.setState({
+//       toggled: !this.state.toggled
+//     })
+//   }
+//
+//   render () {
+//     // SideMenu takes a React Native element as a prop for the actual Side Menu
+//     const MenuComponent = (
+//       <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
+//         <List containerStyle={{marginBottom: 20}}>
+//         {
+//           list.map((item, i) => (
+//             <ListItem
+//               roundAvatar
+//               onPress={() => console.log('something')}
+//               avatar={{uri:item.avatar_url}}
+//               key={i}
+//               title={item.name}
+//               subtitle={item.subtitle} />
+//           ))
+//         }
+//         </List>
+//       </View>
+//     )
+//     return (
+//       <SideMenu
+//         MenuComponent={MenuComponent}
+//         toggled={this.state.toggled}>
+//         <App />
+//       </SideMenu>
+//     )
+//   }
+// }
+
 
 
 const styles = StyleSheet.create({
