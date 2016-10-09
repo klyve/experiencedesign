@@ -17,11 +17,83 @@ console.disableYellowBox = true;
 import AppDashboard from './app/AppDashboard';
 import Settings from './app/Settings'
 
+
+const settingsList = [
+  {
+    name: 'Notifications',
+    type: 'switch',
+    value: true
+  },
+  {
+    name: 'Cool features',
+    type: 'switch',
+    value: false
+  },
+  {
+    name: 'Sound',
+    type: 'menu',
+    value: true,
+    submenu: [
+      {
+        name: 'Notifications',
+        type: 'switch',
+        value: true
+      },
+      {
+        name: 'Test1',
+        type: 'switch',
+        value: true
+      },
+      {
+        name: 'Test2',
+        type: 'switch',
+        value: true
+      },
+      {
+        name: 'Test3',
+        type: 'switch',
+        value: true
+      },
+    ]
+  },
+  {
+    name: 'Test1',
+    type: 'menu',
+    value: true
+  },
+  {
+    name: 'Test2',
+    type: 'menu',
+    value: true
+  },
+  {
+    name: 'Test3',
+    type: 'menu',
+    value: true
+  },
+  {
+    name: 'About',
+    type: 'menu',
+    value: true
+  }
+]
+
+let that;
 class FitApp extends Component {
 
 
   constructor () {
     super()
+    this.state = {
+      styleTarget: false
+    }
+    that = this;
+  }
+
+  setSubSetting(id) {
+    this.setState({
+      styleTarget: id
+    })
   }
 
 
@@ -44,10 +116,13 @@ class FitApp extends Component {
     _navigator = navigator
     switch(route.id) {
       case 'index':
-        return (<AppDashboard navigator={navigator} />)
+        return (<AppDashboard navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'settings':
-        return (<Settings navigator={navigator} />)
+        return (<Settings navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'subSettings':
+        return (<Settings navigator={navigator} settings={settingsList[that.state.styleTarget].submenu} app={that} />)
       break;
     }
   }

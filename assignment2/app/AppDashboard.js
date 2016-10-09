@@ -14,7 +14,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { SideMenu, List, ListItem, Button, SocialIcon, Icon } from 'react-native-elements'
+import { SideMenu, List, ListItem, Button, Icon } from 'react-native-elements'
 
 import {
   DateSelector,
@@ -44,14 +44,10 @@ class Header extends Component {
 
 const list = [
   {
-    name: 'Amy Farha',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    subtitle: 'Vice President'
+    name: 'Settings',
   },
   {
-    name: 'Chris Jackson',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
+    name: 'Settings',
   },
 ]
 
@@ -96,6 +92,9 @@ class AppDashboard extends Component {
   }
 
   navigate(pid) {
+    this.setState({
+      toggled: false
+    })
     this.props.navigator.push({
       id: pid
     })
