@@ -76,6 +76,8 @@ class MenuPage extends Component {
 
 }
 
+const test = [];
+
 const styles = StyleSheet.create({
   headerContainer:{}
 });
