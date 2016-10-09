@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import {
-   Icon 
+   Icon
 } from 'react-native-elements'
 
 
