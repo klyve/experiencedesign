@@ -83,6 +83,10 @@ class FoodDashboard extends Component {
       >
 
         <Header>
+          <Image
+            source={require('./img/header_food.png')}
+            style={styles.header_image}
+          />
           <Icon
             name='bars'
             type='font-awesome'
@@ -93,15 +97,6 @@ class FoodDashboard extends Component {
           <View
             style={styles.centerContainer}
           >
-            <Image
-              source={require('./img/center.png')}
-              style={styles.center}
-            >
-              <View style={styles.centerImageTextWrapper}>
-                <Text style={styles.centerImageText}>1257</Text>
-                <Text style={styles.centerImageText}>Points</Text>
-              </View>
-            </Image>
             <DateSelector
               date={this.state.date}
               refs={this}
@@ -109,7 +104,9 @@ class FoodDashboard extends Component {
           </View>
 
         </Header>
-        <Dashboard />
+        <Text>
+          Food goes here
+        </Text>
       </MenuPage>
     );
   }
@@ -124,6 +121,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  header_image: {
+    alignSelf: 'stretch',
+    opacity: 0.6,
+    position: 'absolute',
+    top: 0,
+    height: 300,
   },
   centerContainer: {
     flex: 0.8,
@@ -145,7 +149,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     height: 300,
-    backgroundColor: '#e74c3c',
+    backgroundColor: '#2ECC71',
     paddingTop: 30,
   },
   barbtnicon: {

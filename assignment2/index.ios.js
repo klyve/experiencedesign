@@ -104,7 +104,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'index'
+          id: 'food'
         }}
         renderScene={
           this.renderScene

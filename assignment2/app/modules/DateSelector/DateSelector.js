@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 20,
-    color: 'white'
+    color: 'white',
+    backgroundColor: 'transparent'
   },
   chevronleft: {
     flex: 0.2,
