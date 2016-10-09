@@ -17,6 +17,7 @@ console.disableYellowBox = true;
 import AppDashboard from './app/AppDashboard';
 import Settings from './app/Settings'
 import FoodDashboard from './app/FoodDashboard'
+import SleepDashboard from './app/SleepDashboard'
 
 
 const settingsList = [
@@ -104,7 +105,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'food'
+          id: 'sleep'
         }}
         renderScene={
           this.renderScene
@@ -121,6 +122,9 @@ class FitApp extends Component {
       break;
       case 'food':
         return (<FoodDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'sleep':
+        return (<SleepDashboard navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'settings':
         return (<Settings navigator={navigator} settings={settingsList} app={that} />)

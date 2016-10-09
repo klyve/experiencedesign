@@ -41,7 +41,7 @@ let monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 
-class FoodDashboard extends Component {
+class SleepDashboard extends Component {
   constructor () {
     super()
     let d = new Date();
@@ -101,7 +101,7 @@ class FoodDashboard extends Component {
 
         </Header>
         <Text>
-          Food goes here
+          Sleep data goes here
         </Text>
       </MenuPage>
     );
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     height: 300,
-    backgroundColor: '#2ECC71',
+    backgroundColor: '#1E8BC3',
     paddingTop: 30,
   },
   barbtnicon: {
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default FoodDashboard;
+export default SleepDashboard;

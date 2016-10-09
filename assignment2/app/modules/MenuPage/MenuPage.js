@@ -19,12 +19,16 @@ const list = [
     route: 'index',
   },
   {
-    name: 'Settings',
-    route: 'settings'
-  },
-  {
     name: 'Food',
     route: 'food'
+  },
+  {
+    name: 'Sleep',
+    route: 'sleep'
+  },
+  {
+    name: 'Settings',
+    route: 'settings'
   },
 ]
 
