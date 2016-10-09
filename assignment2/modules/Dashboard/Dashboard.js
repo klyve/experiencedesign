@@ -29,10 +29,7 @@ class Dashboard extends Component {
         <View style={styles.dashboardContainer} >
           <Block right bottom>
             <View style={styles.blockText}>
-              <Image
-                source={require('../../img/steps.png')}
-                style={styles.center}
-              >
+              <Text>First block</Text>
             </View>
             <Levelbar
               progress={50}
@@ -40,10 +37,7 @@ class Dashboard extends Component {
           </Block>
           <Block bottom>
             <View style={styles.blockText}>
-              <Image
-                source={require('../../img/activity.png')}
-                style={styles.center}
-              >
+              <Text>Second block</Text>
             </View>
             <Levelbar
               progress={30}
@@ -53,10 +47,7 @@ class Dashboard extends Component {
         <View style={styles.dashboardContainer} >
           <Block right>
             <View style={styles.blockText}>
-              <Image
-                source={require('../../img/burn.png')}
-                style={styles.center}
-              >
+              <Text>Third block</Text>
             </View>
             <Levelbar
               progress={80}
@@ -64,10 +55,7 @@ class Dashboard extends Component {
           </Block>
           <Block>
             <View style={styles.blockText}>
-              <Image
-                source={require('../../img/sleep.png')}
-                style={styles.center}
-              >
+              <Text>Last block</Text>
             </View>
             <Levelbar
               progress={90}

@@ -1,8 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -22,7 +17,6 @@ import {
   MenuPage
 } from './modules'
 
-console.disableYellowBox = true;
 
 
 
@@ -42,16 +36,12 @@ class Header extends Component {
 
 }
 
-
-
 let monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
 
-class AppDashboard extends Component {
-
-
+class FoodDashboard extends Component {
   constructor () {
     super()
     let d = new Date();
@@ -83,19 +73,9 @@ class AppDashboard extends Component {
     return (d.getDate() == this.state.currentDate.getDate() ? "Today " : "") + this.state.currentDate.getDate() + " " + monthNames[this.state.currentDate.getMonth()]
   }
 
-  navigate(pid) {
-    this.setState({
-      toggled: false
-    })
-    let routes = this.props.navigator.getCurrentRoutes();
-    if(pid != routes[routes.length-1].id)
-      this.props.navigator.push({
-        id: pid
-      })
-  }
 
-  render () {
 
+  render() {
     return (
       <MenuPage
         state={this.state.toggled}
@@ -131,11 +111,10 @@ class AppDashboard extends Component {
         </Header>
         <Dashboard />
       </MenuPage>
-    )
+    );
   }
+
 }
-
-
 
 
 
@@ -179,6 +158,4 @@ const styles = StyleSheet.create({
 });
 
 
-
-
-export default AppDashboard;
+export default FoodDashboard;

@@ -23,8 +23,9 @@ class Block extends Component {
 
     if(this.props.bottom)
       def.push(styles.borderBottom)
+      
     return(
-      <View style={def} >
+      <View style={def}>
         {this.props.children}
       </View>
     );

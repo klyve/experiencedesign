@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 
 import {
@@ -29,7 +30,12 @@ class Dashboard extends Component {
         <View style={styles.dashboardContainer} >
           <Block right bottom>
             <View style={styles.blockText}>
-              <Text>First block</Text>
+              <Text style={styles.title}>Steps</Text>
+              <Image
+                source={require('../../img/steps.png')}
+                style={styles.center}
+              />
+              <Text style={styles.footer}>2000</Text>
             </View>
             <Levelbar
               progress={50}
@@ -37,7 +43,12 @@ class Dashboard extends Component {
           </Block>
           <Block bottom>
             <View style={styles.blockText}>
-              <Text>Second block</Text>
+              <Text style={styles.title}>Activity</Text>
+              <Image
+                source={require('../../img/activity.png')}
+                style={styles.center}
+              />
+              <Text style={styles.footer}>20</Text>
             </View>
             <Levelbar
               progress={30}
@@ -47,7 +58,12 @@ class Dashboard extends Component {
         <View style={styles.dashboardContainer} >
           <Block right>
             <View style={styles.blockText}>
-              <Text>Third block</Text>
+              <Text style={styles.title}>Calories</Text>
+              <Image
+                source={require('../../img/burn.png')}
+                style={styles.center}
+              />
+              <Text style={styles.footer}>1524</Text>
             </View>
             <Levelbar
               progress={80}
@@ -55,7 +71,12 @@ class Dashboard extends Component {
           </Block>
           <Block>
             <View style={styles.blockText}>
-              <Text>Last block</Text>
+              <Text style={styles.title}>Sleep</Text>
+              <Image
+                source={require('../../img/sleep.png')}
+                style={styles.center}
+              />
+              <Text style={styles.footer}>8hr</Text>
             </View>
             <Levelbar
               progress={90}
@@ -70,7 +91,21 @@ class Dashboard extends Component {
 
 const styles = StyleSheet.create({
   blockText: {
-    flex: 0.9
+    flex: 0.9,
+    textAlign: 'center',
+    paddingTop: 10,
+  },
+  title: {
+  textAlign: 'center',
+    fontSize: 25,
+  },
+  footer: {
+  textAlign: 'center',
+    fontSize: 35,
+  },
+  center: {
+    width: 90,
+    height: 90
   },
   dashboardContainer: {
     backgroundColor: 'white',

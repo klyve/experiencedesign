@@ -16,6 +16,7 @@ console.disableYellowBox = true;
 
 import AppDashboard from './app/AppDashboard';
 import Settings from './app/Settings'
+import FoodDashboard from './app/FoodDashboard'
 
 
 const settingsList = [
@@ -117,6 +118,9 @@ class FitApp extends Component {
     switch(route.id) {
       case 'index':
         return (<AppDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'food':
+        return (<FoodDashboard navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'settings':
         return (<Settings navigator={navigator} settings={settingsList} app={that} />)
