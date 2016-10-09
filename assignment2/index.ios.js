@@ -10,11 +10,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
-import { SideMenu, List, ListItem, Button, SocialIcon } from 'react-native-elements'
+import { SideMenu, List, ListItem, Button, SocialIcon, Icon } from 'react-native-elements'
 
+import {
+  DateSelector,
+  Dashboard
+} from './modules'
 
 
 
@@ -29,25 +35,26 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React!
+          Data goes here
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+Control+D for dev menu
-        </Text>
-        <SocialIcon
-          title='Sign In With Facebook'
-          button
-          type='facebook'
-        />
-
       </View>
     );
   }
+
 }
+class Header extends Component {
+
+  render() {
+    return (
+      <View style={styles.headerContainer}>
+        {this.props.children}
+      </View>
+    );
+  }
+
+}
+
+
 const list = [
   {
     name: 'Amy Farha',
@@ -62,12 +69,19 @@ const list = [
 ]
 
 
+let monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
 class assignment2 extends Component {
 
 
   constructor () {
     super()
-    this.state = { toggled: false }
+    let d = new Date();
+    let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
+    this.state = { toggled: false, date: today, currentDate: d }
   }
 
   toggleSideMenu () {
@@ -75,10 +89,29 @@ class assignment2 extends Component {
       toggled: !this.state.toggled
     })
   }
+  selectPrevDate() {
+
+    this.state.currentDate.setDate(this.state.currentDate.getDate() - 1);
+    this.setState({
+      date: this.dateToText()
+    })
+  }
+  selectNextDate() {
+    this.state.currentDate.setDate(this.state.currentDate.getDate() +1);
+    this.setState({
+      date: this.dateToText()
+    })
+  }
+
+  dateToText() {
+    let d = new Date();
+    return (d.getDate() == this.state.currentDate.getDate() ? "Today " : "") + this.state.currentDate.getDate() + " " + monthNames[this.state.currentDate.getMonth()]
+  }
 
   render () {
     // SideMenu takes a React Native element as a prop for the actual Side Menu
     const MenuComponent = (
+
       <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
         <List containerStyle={{marginBottom: 20}}>
         {
@@ -86,7 +119,6 @@ class assignment2 extends Component {
             <ListItem
               roundAvatar
               onPress={() => console.log('something')}
-              avatar={{uri:item.avatar_url}}
               key={i}
               title={item.name}
               subtitle={item.subtitle} />
@@ -95,58 +127,46 @@ class assignment2 extends Component {
         </List>
       </View>
     )
+
     return (
       <SideMenu
         MenuComponent={MenuComponent}
         toggled={this.state.toggled}>
-        <App />
+
+        <Header>
+          <Icon
+            name='bars'
+            type='font-awesome'
+            containerStyle={styles.barbtn}
+            iconStyle={styles.barbtnicon}
+            onPress={() => this.toggleSideMenu() }
+          />
+          <View
+            style={styles.centerContainer}
+          >
+            <Image
+              source={require('./img/center.png')}
+              style={styles.center}
+            >
+              <View style={styles.centerImageTextWrapper}>
+                <Text style={styles.centerImageText}>1257</Text>
+                <Text style={styles.centerImageText}>Points</Text>
+              </View>
+            </Image>
+            <DateSelector
+              date={this.state.date}
+              refs={this}
+             />
+          </View>
+
+        </Header>
+        <Dashboard />
       </SideMenu>
     )
   }
 }
 
 
-
-// class assignment2 extends Component {
-//   constructor () {
-//     super()
-//     this.state = { toggled: false }
-//   }
-//
-//   toggleSideMenu () {
-//     this.setState({
-//       toggled: !this.state.toggled
-//     })
-//   }
-//
-//   render () {
-//     // SideMenu takes a React Native element as a prop for the actual Side Menu
-//     const MenuComponent = (
-//       <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
-//         <List containerStyle={{marginBottom: 20}}>
-//         {
-//           list.map((item, i) => (
-//             <ListItem
-//               roundAvatar
-//               onPress={() => console.log('something')}
-//               avatar={{uri:item.avatar_url}}
-//               key={i}
-//               title={item.name}
-//               subtitle={item.subtitle} />
-//           ))
-//         }
-//         </List>
-//       </View>
-//     )
-//     return (
-//       <SideMenu
-//         MenuComponent={MenuComponent}
-//         toggled={this.state.toggled}>
-//         <App />
-//       </SideMenu>
-//     )
-//   }
-// }
 
 
 
@@ -157,15 +177,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  centerContainer: {
+    flex: 0.8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  center: {
+    height: 175,
+    width: 175,
+  },
+  centerImageTextWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  centerImageText: {
+    fontSize: 25,
+    backgroundColor: 'transparent',
+  },
+  headerContainer: {
+    height: 300,
+    backgroundColor: '#e74c3c',
+    paddingTop: 30,
+  },
+  barbtnicon: {
+    color: 'white',
+  },
+  barbtn: {
+    width: 50,
+    paddingLeft: 10,
   },
 });
 
