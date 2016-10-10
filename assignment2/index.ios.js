@@ -27,6 +27,23 @@ const settingsList = [
     value: true
   },
   {
+    name: 'Test Switch',
+    type: 'menu',
+    value: true,
+    submenu: [
+      {
+        name: 'Switch1',
+        type: 'switch',
+        value: true
+      },
+      {
+        name: 'Switch2',
+        type: 'switch',
+        value: true
+      }
+    ]
+  },
+  {
     name: 'Cool features',
     type: 'switch',
     value: false

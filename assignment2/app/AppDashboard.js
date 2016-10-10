@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Navigator,
   Image,
   TouchableOpacity
@@ -97,6 +98,7 @@ class AppDashboard extends Component {
   render () {
 
     return (
+      <ScrollView>
       <MenuPage
         state={this.state.toggled}
         navigator={this.props.navigator}
@@ -131,6 +133,7 @@ class AppDashboard extends Component {
         </Header>
         <Dashboard />
       </MenuPage>
+      </ScrollView>
     )
   }
 }
