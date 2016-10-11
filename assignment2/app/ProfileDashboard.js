@@ -29,6 +29,10 @@ console.disableYellowBox = true;
 
 
 
+const myprofile = {
+
+}
+
 
 
 class Header extends Component {
@@ -58,6 +62,8 @@ class ProfileDashboard extends Component {
     let d = new Date();
     let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
     this.state = { toggled: false, date: today, currentDate: d }
+
+    this.profile = this.props.inspect || myprofile;
   }
 
   toggleSideMenu () {
@@ -131,7 +137,7 @@ class ProfileDashboard extends Component {
 
         </Header>
         <View style={styles.contentContainer}>
-          <Profile />
+          <Profile profile={this.profile} />
         </View>
       </MenuPage>
       </View>

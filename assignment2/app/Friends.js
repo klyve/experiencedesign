@@ -25,62 +25,70 @@ const list = [
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15',
+    data: {
+      'health': {
+        'value': 15
+      },
+      'cool': {
+        'value': 19
+      }
+    }
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15'
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15'
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15'
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15'
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    subtitle: 'Level 15'
+    level: 'Level 15'
   },
   {
     name: 'Doe johnson',
     avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Level 11'
+    level: 'Level 11'
   },
 ]
 
@@ -94,19 +102,16 @@ class Friends extends Component {
     this.props.navigator.pop();
   }
 
-
-
-  renderRow (rowData, sectionID) {
-    return (
-      <ListItem
-        roundAvatar
-        key={sectionID}
-        title={rowData.name}
-        subtitle={rowData.subtitle}
-        avatar={{uri:rowData.avatar_url}}
-      />
-    )
+  showFriend(item) {
+    this.props.app.setState({
+      inspectFriend: this.list[item]
+    });
+    this.props.navigator.push({
+      id: 'showfriend'
+    })
   }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -118,11 +123,11 @@ class Friends extends Component {
             this.list.map((item, i) => (
               <ListItem
                 roundAvatar
-                onPress={() => console.log('something')}
+                onPress={() => this.showFriend(i)}
                 avatar={{uri:item.avatar_url}}
                 key={i}
                 title={item.name}
-                subtitle={item.subtitle} />
+                subtitle={item.level} />
             ))
           }
           </List>

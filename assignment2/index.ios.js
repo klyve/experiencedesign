@@ -151,7 +151,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'profile'
+          id: 'friends'
         }}
         renderScene={
           this.renderScene
@@ -174,6 +174,9 @@ class FitApp extends Component {
       break;
       case 'profile':
         return (<ProfileDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'showfriend':
+        return (<ProfileDashboard navigator={navigator} settings={settingsList} inspect={that.state.inspectFriend} app={that} />)
       break;
       case 'friends':
         return (<Friends navigator={navigator} settings={settingsList} app={that} />)
