@@ -50,7 +50,7 @@ class MenuPage extends Component {
     super(props)
   }
   navigate(pid) {
-    this.setState({
+    this.props.app.setState({
       toggled: false
     })
     let routes = this.props.navigator.getCurrentRoutes();

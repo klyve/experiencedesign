@@ -61,8 +61,8 @@ class AppDashboard extends Component {
   }
 
   toggleSideMenu () {
-    this.setState({
-      toggled: !this.state.toggled
+    this.props.app.setState({
+      toggled: !this.props.app.state.toggled
     })
   }
   selectPrevDate() {
@@ -85,7 +85,7 @@ class AppDashboard extends Component {
   }
 
   navigate(pid) {
-    this.setState({
+    this.props.app.setState({
       toggled: false
     })
     let routes = this.props.navigator.getCurrentRoutes();
@@ -100,8 +100,9 @@ class AppDashboard extends Component {
     return (
       <ScrollView>
       <MenuPage
-        state={this.state.toggled}
+        state={this.props.app.state.toggled}
         navigator={this.props.navigator}
+        app={this.props.app}
       >
 
         <Header>

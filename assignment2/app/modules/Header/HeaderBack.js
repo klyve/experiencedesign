@@ -32,6 +32,8 @@ class HeaderBack extends Component {
     this.props.navigator.pop();
   }
   render() {
+
+
     return (
       <View>
         <Header style={styles.headerContainer}>
@@ -39,7 +41,19 @@ class HeaderBack extends Component {
           <View style={styles.title}>
             <Text style={styles.titleText}>{this.props.title}</Text>
           </View>
+          {
+            (() => {
+              if(this.props.addbutton) {
 
+                return (
+                  <TouchableHighlight style={styles.addItemContainer} onPress={ () => this.props.action() }>
+                    <Text style={styles.addItem}>Add</Text>
+                  </TouchableHighlight>
+                )
+
+              }
+            })()
+          }
           <TouchableHighlight onPress={() => this.navigate() }>
             <View style={styles.textContainer}>
               <Icon
@@ -86,6 +100,16 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection:'row',
     paddingLeft: 10,
+  },
+  addItemContainer: {
+    position: 'absolute',
+    right: 10,
+    top: 0,
+  },
+  addItem: {
+    paddingTop: 40,
+    fontSize: 15,
+    color: 'white',
   },
   chevronleft: {
   },

@@ -51,8 +51,8 @@ class SleepDashboard extends Component {
   }
 
   toggleSideMenu () {
-    this.setState({
-      toggled: !this.state.toggled
+    this.props.app.setState({
+      toggled: !this.props.app.state.toggled
     })
   }
   selectPrevDate() {
@@ -79,8 +79,9 @@ class SleepDashboard extends Component {
   render() {
     return (
       <MenuPage
-        state={this.state.toggled}
+        state={this.props.app.state.toggled}
         navigator={this.props.navigator}
+        app={this.props.app}
       >
 
         <Header>

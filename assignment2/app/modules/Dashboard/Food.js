@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -24,52 +25,74 @@ class Food extends Component {
     this.state = {date: 12}
   }
 
+  action(type) {
+    this.props.itemNavigate(type)
+  }
+
   render() {
     return(
       <View>
         <View style={styles.dashboardContainer} >
-          <Block right bottom>
-            <View style={styles.blockText}>
-              <Text style={styles.title}>Breakfast</Text>
-              <Image
-                source={require('../../img/burn.png')}
-                style={styles.center}
-              />
-              <Text style={styles.footer}>634</Text>
+          <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('breakfast') }>
+            <View>
+              <Block right bottom>
+                <View style={styles.blockText}>
+                  <Text style={styles.title}>Breakfast</Text>
+                  <Image
+                    source={require('../../img/burn.png')}
+                    style={styles.center}
+                  />
+                  <Text style={styles.footer}>634</Text>
+                </View>
+              </Block>
             </View>
-          </Block>
-          <Block bottom>
-            <View style={styles.blockText}>
-              <Text style={styles.title}>Lunch</Text>
-              <Image
-                source={require('../../img/sleep.png')}
-                style={styles.center}
-              />
-              <Text style={styles.footer}>725</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('lunch') }>
+            <View>
+              <Block bottom>
+                <View style={styles.blockText}>
+                  <Text style={styles.title}>Lunch</Text>
+                  <Image
+                    source={require('../../img/sleep.png')}
+                    style={styles.center}
+                  />
+                  <Text style={styles.footer}>725</Text>
+                </View>
+              </Block>
             </View>
-          </Block>
-        </View>
+        </TouchableHighlight>
+      </View>
+
         <View style={styles.dashboardContainer} >
-          <Block right>
-            <View style={styles.blockText}>
-              <Text style={styles.title}>Dinner</Text>
-              <Image
-                source={require('../../img/deepsleep.png')}
-                style={styles.center}
-              />
-              <Text style={styles.footer}>875</Text>
+
+        <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('dinner') }>
+          <View>
+            <Block right>
+              <View style={styles.blockText}>
+                <Text style={styles.title}>Dinner</Text>
+                <Image
+                  source={require('../../img/deepsleep.png')}
+                  style={styles.center}
+                />
+                <Text style={styles.footer}>875</Text>
+              </View>
+            </Block>
+          </View>
+        </TouchableHighlight>
+          <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('snack') }>
+            <View>
+              <Block>
+                <View style={styles.blockText}>
+                  <Text style={styles.title}>Snack</Text>
+                  <Image
+                    source={require('../../img/laying.png')}
+                    style={styles.center}
+                  />
+                  <Text style={styles.footer}>123</Text>
+                </View>
+              </Block>
             </View>
-          </Block>
-          <Block>
-            <View style={styles.blockText}>
-              <Text style={styles.title}>Snack</Text>
-              <Image
-                source={require('../../img/laying.png')}
-                style={styles.center}
-              />
-              <Text style={styles.footer}>123</Text>
-            </View>
-          </Block>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -78,6 +101,9 @@ class Food extends Component {
 }
 
 const styles = StyleSheet.create({
+  touchstyle: {
+    flex: 1,
+  },
   blockText: {
     flex: 0.9,
     textAlign: 'center',

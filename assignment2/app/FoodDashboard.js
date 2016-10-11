@@ -43,16 +43,16 @@ let monthNames = ["January", "February", "March", "April", "May", "June",
 
 
 class FoodDashboard extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     let d = new Date();
     let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
     this.state = { toggled: false, date: today, currentDate: d }
   }
 
   toggleSideMenu () {
-    this.setState({
-      toggled: !this.state.toggled
+    this.props.app.setState({
+      toggled: !this.props.app.state.toggled
     })
   }
   selectPrevDate() {
@@ -74,13 +74,24 @@ class FoodDashboard extends Component {
     return (d.getDate() == this.state.currentDate.getDate() ? "Today " : "") + this.state.currentDate.getDate() + " " + monthNames[this.state.currentDate.getMonth()]
   }
 
+  itemNavigate(type) {
+    this.props.app.setState({
+      foodObject: type,
+      toggled: false
+    })
+    this.props.navigator.push({
+      id: 'addfood'
+    })
+  }
+
 
 
   render() {
     return (
       <MenuPage
-        state={this.state.toggled}
+        state={this.props.app.state.toggled}
         navigator={this.props.navigator}
+        app={this.props.app}
       >
 
         <Header>
@@ -125,7 +136,7 @@ class FoodDashboard extends Component {
 
         </Header>
         <ScrollView style={styles.contentContainer}>
-          <Food />
+          <Food itemNavigate={ (i) => this.itemNavigate(i)}/>
         </ScrollView>
       </MenuPage>
     );

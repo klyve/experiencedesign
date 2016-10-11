@@ -20,6 +20,7 @@ import FoodDashboard from './app/FoodDashboard'
 import SleepDashboard from './app/SleepDashboard'
 import ProfileDashboard from './app/ProfileDashboard'
 import Friends from './app/Friends'
+import AddFood from './app/AddFood'
 
 
 const settingsList = [
@@ -99,6 +100,30 @@ const settingsList = [
   }
 ]
 
+
+const foodlist = {
+  'breakfast': [{
+    name: 'Breakfast Chicken fillet',
+    avatar_url: 'https://greatwebmarketingzine.files.wordpress.com/2014/03/153957315.jpg',
+    subtitle: '128 calories'
+  }],
+  'lunch': [{
+    name: 'Lunch Chicken fillet',
+    avatar_url: 'https://greatwebmarketingzine.files.wordpress.com/2014/03/153957315.jpg',
+    subtitle: '128 calories'
+  }],
+  'dinner': [{
+    name: 'Dinner Chicken fillet',
+    avatar_url: 'https://greatwebmarketingzine.files.wordpress.com/2014/03/153957315.jpg',
+    subtitle: '128 calories'
+  }],
+  'snack': [{
+    name: 'Snack Chicken fillet',
+    avatar_url: 'https://greatwebmarketingzine.files.wordpress.com/2014/03/153957315.jpg',
+    subtitle: '128 calories'
+  }],
+}
+
 let that;
 class FitApp extends Component {
 
@@ -106,7 +131,9 @@ class FitApp extends Component {
   constructor () {
     super()
     this.state = {
-      styleTarget: false
+      styleTarget: false,
+      foodObject: '',
+      toggled: false,
     }
     that = this;
   }
@@ -124,7 +151,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'food'
+          id: 'index'
         }}
         renderScene={
           this.renderScene
@@ -150,6 +177,9 @@ class FitApp extends Component {
       break;
       case 'friends':
         return (<Friends navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'addfood':
+        return (<AddFood navigator={navigator} settings={settingsList} foods={foodlist} app={that} />)
       break;
       case 'settings':
         return (<Settings navigator={navigator} settings={settingsList} app={that} />)

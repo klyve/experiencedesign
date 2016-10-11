@@ -53,16 +53,16 @@ let monthNames = ["January", "February", "March", "April", "May", "June",
 class ProfileDashboard extends Component {
 
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     let d = new Date();
     let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
     this.state = { toggled: false, date: today, currentDate: d }
   }
 
   toggleSideMenu () {
-    this.setState({
-      toggled: !this.state.toggled
+    this.props.app.setState({
+      toggled: !this.props.app.state.toggled
     })
   }
   selectPrevDate() {
@@ -85,7 +85,7 @@ class ProfileDashboard extends Component {
   }
 
   navigate(pid) {
-    this.setState({
+    this.props.app.setState({
       toggled: false
     })
     let routes = this.props.navigator.getCurrentRoutes();
@@ -100,8 +100,9 @@ class ProfileDashboard extends Component {
     return (
       <View>
       <MenuPage
-        state={this.state.toggled}
+        state={this.props.app.state.toggled}
         navigator={this.props.navigator}
+        app={this.props.app}
       >
 
         <Header>
