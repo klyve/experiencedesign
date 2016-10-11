@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Navigator,
   TouchableHighlight,
   ListView,
@@ -20,11 +21,74 @@ import {
 
 
 
+const list = [
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+  {
+    name: 'John doe',
+    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+    subtitle: 'Level 15'
+  },
+  {
+    name: 'Doe johnson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Level 11'
+  },
+]
+
 
 class Friends extends Component {
   constructor(props) {
     super(props)
-    this.list = this.props.settings || [];
+    this.list = this.props.list || list;
   }
   navigate() {
     this.props.navigator.pop();
@@ -46,19 +110,23 @@ class Friends extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeaderBack navigator={this.props.navigator} />
+        <HeaderBack navigator={this.props.navigator} title="Friends" />
         <View style={{flex: 1, paddingTop: 0, top: 0, margin: 0, marginTop: 0}}>
-          <List containerStyle={{marginBottom: 20, marginTop: 0}}>
+          <ScrollView>
+        <List containerStyle={{marginBottom: 20, marginTop: 0}}>
           {
             this.list.map((item, i) => (
               <ListItem
-                component={() => (
-                  <OptionsItem app={this.props.app} name={item.name} type={item.type} value={item.value} navigator={this.props.navigator} id={i} />
-                )}
-              />
+                roundAvatar
+                onPress={() => console.log('something')}
+                avatar={{uri:item.avatar_url}}
+                key={i}
+                title={item.name}
+                subtitle={item.subtitle} />
             ))
           }
           </List>
+          </ScrollView>
         </View>
       </View>
     );

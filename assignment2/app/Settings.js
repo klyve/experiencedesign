@@ -46,7 +46,7 @@ class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeaderBack navigator={this.props.navigator} />
+        <HeaderBack navigator={this.props.navigator} title="Settings" />
         <View style={{flex: 1, paddingTop: 0, top: 0, margin: 0, marginTop: 0}}>
           <List containerStyle={{marginBottom: 20, marginTop: 0}}>
           {

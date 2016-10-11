@@ -37,7 +37,7 @@ class HeaderBack extends Component {
         <Header style={styles.headerContainer}>
 
           <View style={styles.title}>
-            <Text style={styles.titleText}>Settings</Text>
+            <Text style={styles.titleText}>{this.props.title}</Text>
           </View>
 
           <TouchableHighlight onPress={() => this.navigate() }>

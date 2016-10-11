@@ -123,7 +123,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'sleep'
+          id: 'index'
         }}
         renderScene={
           this.renderScene
