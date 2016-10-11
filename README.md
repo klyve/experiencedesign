@@ -1,6 +1,7 @@
 # experiencedesign
 experiencedesign
 
+This code is highly experimental and breaks a lot of best practices, it was a weekend project learning react native for a school project.
 
 ## How to install (osx)
 
