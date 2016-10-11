@@ -25,7 +25,7 @@ const list = [
   {
     name: 'John doe',
     avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    level: 'Level 15',
+    level: 15,
     data: {
       'health': {
         'value': 15

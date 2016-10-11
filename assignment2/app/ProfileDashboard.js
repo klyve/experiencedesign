@@ -31,6 +31,9 @@ console.disableYellowBox = true;
 
 const myprofile = {
 
+  data: {
+
+  }
 }
 
 
@@ -104,7 +107,6 @@ class ProfileDashboard extends Component {
 
 
   render () {
-
     return (
       <View style={styles.contentContainer}>
       <MenuPage
@@ -129,7 +131,7 @@ class ProfileDashboard extends Component {
               style={styles.center}
             >
               <View style={styles.centerImageTextWrapper}>
-                <Text style={styles.centerImageText}>17</Text>
+                <Text style={styles.centerImageText}>{this.profile.level}</Text>
                 <Text style={styles.centerImageText}>level</Text>
               </View>
             </Image>
