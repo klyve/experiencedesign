@@ -18,6 +18,7 @@ import AppDashboard from './app/AppDashboard';
 import Settings from './app/Settings'
 import FoodDashboard from './app/FoodDashboard'
 import SleepDashboard from './app/SleepDashboard'
+import ProfileDashboard from './app/ProfileDashboard'
 import Friends from './app/Friends'
 
 
@@ -123,7 +124,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'index'
+          id: 'profile'
         }}
         renderScene={
           this.renderScene
@@ -143,6 +144,9 @@ class FitApp extends Component {
       break;
       case 'sleep':
         return (<SleepDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'profile':
+        return (<ProfileDashboard navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'friends':
         return (<Friends navigator={navigator} settings={settingsList} app={that} />)
