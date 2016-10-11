@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Navigator,
   Image,
   TouchableOpacity
@@ -93,6 +94,18 @@ class SleepDashboard extends Component {
           <View
             style={styles.centerContainer}
           >
+            <View style={styles.textwrapper}>
+              <Text style={styles.alignleft}>11:30</Text>
+              <Text style={styles.alignright}>08:30</Text>
+            </View>
+            <Image
+              source={require('./img/sleepgraph.png')}
+              style={styles.center}
+            >
+            </Image>
+
+            <Text style={styles.sleepnum}>9h 5m</Text>
+
             <DateSelector
               date={this.state.date}
               refs={this}
@@ -100,9 +113,11 @@ class SleepDashboard extends Component {
           </View>
 
         </Header>
+        <ScrollView style={styles.contentContainer}>
         <Text>
           Sleep data goes here
         </Text>
+        </ScrollView>
       </MenuPage>
     );
   }
@@ -112,6 +127,10 @@ class SleepDashboard extends Component {
 
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -131,8 +150,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   center: {
-    height: 175,
-    width: 175,
+    height: 105,
+    alignSelf: 'stretch',
+    backgroundColor: 'transparent'
   },
   centerImageTextWrapper: {
     flex: 1,
@@ -155,6 +175,33 @@ const styles = StyleSheet.create({
     width: 50,
     paddingLeft: 10,
   },
+
+  textwrapper: {
+    marginTop: 20,
+    marginBottom: 5,
+    flexDirection:'row',
+    alignItems: 'flex-end',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  alignleft: {
+    flex: 0.5,
+    color: 'white',
+    fontSize: 20,
+  },
+  alignright: {
+    flex: 0.5,
+    color: 'white',
+    fontSize: 20,
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end'
+  },
+  sleepnum: {
+    marginTop:10,
+    color: 'white',
+    fontSize: 20,
+  }
+
 });
 
 
