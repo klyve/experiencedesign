@@ -50,14 +50,15 @@ let monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 
+let d = new Date();
 class AppDashboard extends Component {
 
 
   constructor () {
     super()
-    let d = new Date();
     let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
-    this.state = { toggled: false, date: today, currentDate: d }
+    let dstring = d.getDate() + ":" + d.getDay() + ":" + d.getYear();
+    this.state = { toggled: false, date: today, currentDate: d, dateString: dstring }
   }
 
   toggleSideMenu () {
@@ -69,13 +70,15 @@ class AppDashboard extends Component {
 
     this.state.currentDate.setDate(this.state.currentDate.getDate() - 1);
     this.setState({
-      date: this.dateToText()
+      date: this.dateToText(),
+      dateString: d.getDate() + ":" + d.getDay() + ":" + d.getYear()
     })
   }
   selectNextDate() {
     this.state.currentDate.setDate(this.state.currentDate.getDate() +1);
     this.setState({
-      date: this.dateToText()
+      date: this.dateToText(),
+      dateString: d.getDate() + ":" + d.getDay() + ":" + d.getYear()
     })
   }
 
@@ -105,6 +108,12 @@ class AppDashboard extends Component {
     }
   }
 
+  getDateValue(name) {
+    if(!appData[this.state.dateString])
+      return 0
+    return appData[this.state.dateString][name]
+  }
+
   render () {
 
     return (
@@ -131,7 +140,7 @@ class AppDashboard extends Component {
               style={styles.center}
             >
               <View style={styles.centerImageTextWrapper}>
-                <Text style={styles.centerImageText}>1257</Text>
+                <Text style={styles.centerImageText}>{this.getDateValue('points')}</Text>
                 <Text style={styles.centerImageText}>Points</Text>
               </View>
             </Image>
@@ -142,7 +151,7 @@ class AppDashboard extends Component {
           </View>
 
         </Header>
-        <Dashboard  itemNavigate={ (i) => this.itemNavigate(i)}/>
+        <Dashboard appData={appData} datestring={this.state.dateString}  itemNavigate={ (i) => this.itemNavigate(i)}/>
       </MenuPage>
       </ScrollView>
     )
@@ -191,6 +200,64 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
 });
+
+
+
+
+const appData = {
+
+  '11:2:116': {
+    points: 1237,
+    steps: 8913,
+    activity: 87,
+    calories: 3291,
+    sleep: '8h 15m'
+  },
+  '10:1:116': {
+    points: 2341,
+    steps: 12913,
+    activity: 187,
+    calories: 3891,
+    sleep: '12h 5m'
+  },
+  '9:0:116': {
+    points: 1341,
+    steps: 4913,
+    activity: 17,
+    calories: 2291,
+    sleep: '4h 32m'
+  },
+  '8:6:116': {
+    points: 1841,
+    steps: 18913,
+    activity: 287,
+    calories: 4291,
+    sleep: '7h 5m'
+  },
+  '7:5:116': {
+    points: 1641,
+    steps: 9913,
+    activity: 87,
+    calories: 3891,
+    sleep: '8h 51m'
+  },
+  '6:4:116': {
+    points: 3141,
+    steps: 8913,
+    activity: 127,
+    calories: 2711,
+    sleep: '9h 12m'
+  },
+  '5:3:116': {
+    points: 741,
+    steps: 9124,
+    activity: 56,
+    calories: 2816,
+    sleep: '2h 5m'
+  }
+
+
+}
 
 
 

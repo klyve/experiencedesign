@@ -21,6 +21,8 @@ import SleepDashboard from './app/SleepDashboard'
 import ProfileDashboard from './app/ProfileDashboard'
 import Friends from './app/Friends'
 import AddFood from './app/AddFood'
+import ActivityDashboard from './app/ActivityDashboard'
+import ActivityItem from './app/ActivityItem'
 
 
 const settingsList = [
@@ -151,7 +153,7 @@ class FitApp extends Component {
     return (
       <Navigator
         initialRoute={{
-          id: 'friends'
+          id: 'index'
         }}
         renderScene={
           this.renderScene
@@ -174,6 +176,12 @@ class FitApp extends Component {
       break;
       case 'profile':
         return (<ProfileDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'activity':
+        return (<ActivityDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'activityitem':
+        return (<ActivityItem navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'showfriend':
         return (<ProfileDashboard navigator={navigator} settings={settingsList} inspect={that.state.inspectFriend} app={that} />)

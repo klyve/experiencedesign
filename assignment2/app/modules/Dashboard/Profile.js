@@ -29,13 +29,23 @@ class Profile extends Component {
     this.state = {
       health: {
         name: 'Health',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        value: 'Level 1'
-      },
-      cool: {
-        name: 'Cool',
         avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-        value: 'Level 1'
+        value: 1
+      },
+      walking: {
+        name: 'Walking',
+        avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+        value: 1
+      },
+      jogging: {
+        name: 'Jogging',
+        avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+        value: 1
+      },
+      food: {
+        name: 'Food',
+        avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
+        value: 1
       }
     };
 

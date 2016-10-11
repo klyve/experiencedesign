@@ -18,18 +18,11 @@ import Levelbar from '../Dashboard/Levelbar'
 
 
 
-class Dashboard extends Component {
+class Activity extends Component {
 
   constructor(props) {
     super(props);
     this.state = {date: 12}
-    this.data = this.props.appData[this.props.datestring];
-  }
-
-  getValue(name) {
-    if(!this.props.appData[this.props.datestring])
-      return 0;
-    return this.props.appData[this.props.datestring][name]
   }
 
   action(type) {
@@ -45,16 +38,13 @@ class Dashboard extends Component {
           <View>
           <Block right bottom>
             <View style={styles.blockText}>
-              <Text style={styles.title}>Steps</Text>
+              <Text style={styles.title}>Avg. Hr</Text>
               <Image
-                source={require('../../img/steps.png')}
+                source={require('../../img/hr2.png')}
                 style={styles.center}
               />
-              <Text style={styles.footer}>{this.getValue('steps')}</Text>
+              <Text style={styles.footer}>128</Text>
             </View>
-            <Levelbar
-              progress={50}
-            />
           </Block>
         </View>
       </TouchableHighlight>
@@ -63,16 +53,13 @@ class Dashboard extends Component {
         <View>
           <Block bottom>
             <View style={styles.blockText}>
-              <Text style={styles.title}>Activity</Text>
+              <Text style={styles.title}>Max Hr</Text>
               <Image
-                source={require('../../img/activity.png')}
+                source={require('../../img/hr1.png')}
                 style={styles.center}
               />
-              <Text style={styles.footer}>{this.getValue('activity')}</Text>
+              <Text style={styles.footer}>179</Text>
             </View>
-            <Levelbar
-              progress={30}
-            />
           </Block>
         </View>
       </TouchableHighlight>
@@ -89,11 +76,8 @@ class Dashboard extends Component {
                 source={require('../../img/burn.png')}
                 style={styles.center}
               />
-              <Text style={styles.footer}>{this.getValue('calories')}</Text>
+              <Text style={styles.footer}>394</Text>
             </View>
-            <Levelbar
-              progress={80}
-            />
           </Block>
         </View>
       </TouchableHighlight>
@@ -102,16 +86,13 @@ class Dashboard extends Component {
         <View>
           <Block>
             <View style={styles.blockText}>
-              <Text style={styles.title}>Sleep</Text>
+              <Text style={styles.title}>Distance</Text>
               <Image
-                source={require('../../img/sleep.png')}
+                source={require('../../img/distance.png')}
                 style={styles.center}
               />
-              <Text style={styles.footer}>{this.getValue('sleep')}</Text>
+              <Text style={styles.footer}>6.8km</Text>
             </View>
-            <Levelbar
-              progress={90}
-            />
           </Block>
         </View>
       </TouchableHighlight>
@@ -154,4 +135,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Dashboard
+export default Activity

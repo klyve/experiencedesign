@@ -8,6 +8,7 @@ import OptionsItem from './Options/OptionsItem'
 import MenuPage from './MenuPage/MenuPage'
 import Profile from './Dashboard/Profile'
 import Food from './Dashboard/Food'
+import Activity from './Dashboard/Activity'
 //import Test from './Test/Test'
 const Elements = {
   DateSelector,
@@ -18,7 +19,8 @@ const Elements = {
   MenuPage,
   Sleep,
   Profile,
-  Food
+  Food,
+  Activity
 }
 
 

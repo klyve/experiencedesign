@@ -39,7 +39,7 @@ class Food extends Component {
                 <View style={styles.blockText}>
                   <Text style={styles.title}>Breakfast</Text>
                   <Image
-                    source={require('../../img/burn.png')}
+                    source={require('../../img/breakfast.png')}
                     style={styles.center}
                   />
                   <Text style={styles.footer}>634</Text>
@@ -53,7 +53,7 @@ class Food extends Component {
                 <View style={styles.blockText}>
                   <Text style={styles.title}>Lunch</Text>
                   <Image
-                    source={require('../../img/sleep.png')}
+                    source={require('../../img/lunch.png')}
                     style={styles.center}
                   />
                   <Text style={styles.footer}>725</Text>
@@ -71,7 +71,7 @@ class Food extends Component {
               <View style={styles.blockText}>
                 <Text style={styles.title}>Dinner</Text>
                 <Image
-                  source={require('../../img/deepsleep.png')}
+                  source={require('../../img/dinner.png')}
                   style={styles.center}
                 />
                 <Text style={styles.footer}>875</Text>
@@ -85,7 +85,7 @@ class Food extends Component {
                 <View style={styles.blockText}>
                   <Text style={styles.title}>Snack</Text>
                   <Image
-                    source={require('../../img/laying.png')}
+                    source={require('../../img/snack.png')}
                     style={styles.center}
                   />
                   <Text style={styles.footer}>123</Text>

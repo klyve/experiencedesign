@@ -23,66 +23,24 @@ import {
 
 const list = [
   {
-    name: 'John doe',
-    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    level: 15,
-    data: {
-      'health': {
-        'value': 15
-      },
-      'walking': {
-        'value': 14
-      },
-      'jogging': {
-        'value': 19
-      },
-      'food': {
-        'value': 15
-      }
-    }
+    name: 'Running',
+    avatar_url: 'https://d30y9cdsu7xlg0.cloudfront.net/png/21075-200.png',
+    duration: '45min (312points)',
   },
   {
-    name: 'Joe doeson',
-    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    level: 25,
-    data: {
-      'health': {
-        'value': 35
-      },
-      'walking': {
-        'value': 54
-      },
-      'jogging': {
-        'value': 12
-      },
-      'food': {
-        'value': 45
-      }
-    }
+    name: 'Walking',
+    avatar_url: 'https://d30y9cdsu7xlg0.cloudfront.net/png/19727-200.png',
+    duration: '1h (215points)'
   },
   {
-    name: 'Peter pan',
-    avatar_url: 'https://i.stack.imgur.com/Lkn5a.png?s=328&g=1',
-    level: 9,
-    data: {
-      'health': {
-        'value': 14
-      },
-      'walking': {
-        'value': 14
-      },
-      'jogging': {
-        'value': 1
-      },
-      'food': {
-        'value': 21
-      }
-    }
+    name: 'Kettlebells',
+    avatar_url: 'https://d30y9cdsu7xlg0.cloudfront.net/png/37770-200.png',
+    duration: '45min (357points)'
   },
 ]
 
 
-class Friends extends Component {
+class ActivityDashboard extends Component {
   constructor(props) {
     super(props)
     this.list = this.props.list || list;
@@ -91,20 +49,24 @@ class Friends extends Component {
     this.props.navigator.pop();
   }
 
-  showFriend(item) {
+  showActivity(item) {
     this.props.app.setState({
-      inspectFriend: this.list[item]
+      inspectActivity: this.list[item]
     });
     this.props.navigator.push({
-      id: 'showfriend'
+      id: 'activityitem'
     })
+  }
+
+  addItem(item) {
+
   }
 
 
   render() {
     return (
       <View style={styles.container}>
-        <HeaderBack navigator={this.props.navigator} title="Friends" />
+        <HeaderBack navigator={this.props.navigator} title="ActivityDashboard" addbutton action={this.addItem} />
         <View style={{flex: 1, paddingTop: 0, top: 0, margin: 0, marginTop: 0}}>
           <ScrollView>
         <List containerStyle={{marginBottom: 20, marginTop: 0}}>
@@ -112,11 +74,11 @@ class Friends extends Component {
             this.list.map((item, i) => (
               <ListItem
                 roundAvatar
-                onPress={() => this.showFriend(i)}
+                onPress={() => this.showActivity(i)}
                 avatar={{uri:item.avatar_url}}
                 key={i}
                 title={item.name}
-                subtitle={item.level} />
+                subtitle={item.duration} />
             ))
           }
           </List>
@@ -175,4 +137,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Friends
+export default ActivityDashboard

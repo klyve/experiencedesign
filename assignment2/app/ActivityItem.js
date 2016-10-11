@@ -19,7 +19,7 @@ import { SideMenu, List, ListItem, Button, Icon } from 'react-native-elements'
 
 import {
   DateSelector,
-  Profile,
+  Activity,
   MenuPage
 } from './modules'
 
@@ -28,25 +28,6 @@ console.disableYellowBox = true;
 
 
 
-
-const myprofile = {
-
-  level: 13,
-  data: {
-    'health': {
-      'value': 11
-    },
-    'walking': {
-      'value': 12
-    },
-    'jogging': {
-      'value': 9
-    },
-    'food': {
-      'value': 5
-    }
-  }
-}
 
 
 
@@ -69,16 +50,14 @@ let monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 
-class ProfileDashboard extends Component {
+class ActivityItem extends Component {
 
 
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     let d = new Date();
     let today = "Today " + d.getDate() + " " + monthNames[d.getMonth()];
     this.state = { toggled: false, date: today, currentDate: d }
-
-    this.profile = this.props.inspect || myprofile;
   }
 
   toggleSideMenu () {
@@ -115,12 +94,21 @@ class ProfileDashboard extends Component {
         id: pid
       })
   }
-
-
+  itemNavigate(item) {
+    this.props.app.setState({
+      toggled: false
+    })
+    if(item) {
+      this.props.navigator.push({
+        id: item
+      })
+    }
+  }
 
   render () {
+
     return (
-      <View style={styles.contentContainer}>
+      <ScrollView>
       <MenuPage
         state={this.props.app.state.toggled}
         navigator={this.props.navigator}
@@ -143,18 +131,17 @@ class ProfileDashboard extends Component {
               style={styles.center}
             >
               <View style={styles.centerImageTextWrapper}>
-                <Text style={styles.centerImageText}>{this.profile.level || 1}</Text>
-                <Text style={styles.centerImageText}>level</Text>
+                <Text style={styles.centerImageText}>257</Text>
+                <Text style={styles.centerImageText}>points</Text>
               </View>
             </Image>
+            <Text style={styles.duration}>1 hour 5 minutes</Text>
           </View>
 
         </Header>
-        <View style={styles.contentContainer}>
-          <Profile profile={this.profile} />
-        </View>
+        <Activity  itemNavigate={ (i) => this.itemNavigate(i)}/>
       </MenuPage>
-      </View>
+      </ScrollView>
     )
   }
 }
@@ -170,14 +157,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  contentContainer: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
   centerContainer: {
     flex: 0.8,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  duration: {
+    marginTop: 10,
+    color: 'white',
+    fontSize: 20,
   },
   center: {
     height: 175,
@@ -209,4 +197,4 @@ const styles = StyleSheet.create({
 
 
 
-export default ProfileDashboard;
+export default ActivityItem;
