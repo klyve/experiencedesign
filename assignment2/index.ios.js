@@ -18,6 +18,7 @@ import AppDashboard from './app/AppDashboard';
 import Settings from './app/Settings'
 import FoodDashboard from './app/FoodDashboard'
 import SleepDashboard from './app/SleepDashboard'
+import Friends from './app/Friends'
 
 
 const settingsList = [
@@ -142,6 +143,9 @@ class FitApp extends Component {
       break;
       case 'sleep':
         return (<SleepDashboard navigator={navigator} settings={settingsList} app={that} />)
+      break;
+      case 'friends':
+        return (<Friends navigator={navigator} settings={settingsList} app={that} />)
       break;
       case 'settings':
         return (<Settings navigator={navigator} settings={settingsList} app={that} />)
