@@ -27,6 +27,18 @@ const list = [
     route: 'sleep'
   },
   {
+    name: 'Activity',
+    route: 'activity'
+  },
+  {
+    name: 'Friends',
+    route: 'friends'
+  },
+  {
+    name: 'Profile',
+    route: 'profile'
+  },
+  {
     name: 'Settings',
     route: 'settings'
   },

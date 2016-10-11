@@ -14,7 +14,7 @@ import { SideMenu, List, ListItem, Button, Icon } from 'react-native-elements'
 
 import {
   DateSelector,
-  Dashboard,
+  Sleep,
   MenuPage
 } from './modules'
 
@@ -96,7 +96,9 @@ class SleepDashboard extends Component {
           >
             <View style={styles.textwrapper}>
               <Text style={styles.alignleft}>11:30</Text>
-              <Text style={styles.alignright}>08:30</Text>
+              <View style={styles.alignright}>
+                <Text style={styles.alignrightText}>08:30</Text>
+              </View>
             </View>
             <Image
               source={require('./img/sleepgraph.png')}
@@ -104,7 +106,7 @@ class SleepDashboard extends Component {
             >
             </Image>
 
-            <Text style={styles.sleepnum}>9h 5m</Text>
+            <Text style={styles.sleepnum}>9h 0m</Text>
 
             <DateSelector
               date={this.state.date}
@@ -114,9 +116,7 @@ class SleepDashboard extends Component {
 
         </Header>
         <ScrollView style={styles.contentContainer}>
-        <Text>
-          Sleep data goes here
-        </Text>
+          <Sleep />
         </ScrollView>
       </MenuPage>
     );
@@ -191,15 +191,18 @@ const styles = StyleSheet.create({
   },
   alignright: {
     flex: 0.5,
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end'
+  },
+  alignrightText: {
     color: 'white',
     fontSize: 20,
     alignSelf: 'flex-end',
-    justifyContent: 'flex-end'
   },
   sleepnum: {
     marginTop:10,
     color: 'white',
-    fontSize: 20,
+    fontSize: 25,
   }
 
 });
