@@ -7,6 +7,7 @@ import HeaderBack from './Header/HeaderBack'
 import OptionsItem from './Options/OptionsItem'
 import MenuPage from './MenuPage/MenuPage'
 import Profile from './Dashboard/Profile'
+import Food from './Dashboard/Food'
 //import Test from './Test/Test'
 const Elements = {
   DateSelector,
@@ -16,7 +17,8 @@ const Elements = {
   OptionsItem,
   MenuPage,
   Sleep,
-  Profile
+  Profile,
+  Food
 }
 
 

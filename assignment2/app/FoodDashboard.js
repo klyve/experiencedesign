@@ -14,7 +14,7 @@ import { SideMenu, List, ListItem, Button, Icon } from 'react-native-elements'
 
 import {
   DateSelector,
-  Sleep,
+  Food,
   MenuPage
 } from './modules'
 
@@ -94,29 +94,38 @@ class FoodDashboard extends Component {
           <View
             style={styles.centerContainer}
           >
-            <View style={styles.textwrapper}>
-              <Text style={styles.alignleft}>11:30</Text>
-              <View style={styles.alignright}>
-                <Text style={styles.alignrightText}>08:30</Text>
-              </View>
-            </View>
+
             <Image
-              source={require('./img/sleepgraph.png')}
-              style={styles.center}
+              source={require('./img/imgfood.png')}
+              style={styles.centerimg}
             >
+              <View style={styles.centerImageTextWrapper}>
+                <Text style={styles.centerImageText}>1987</Text>
+                <Text style={styles.centerImageText}>Calories</Text>
+              </View>
             </Image>
 
-            <Text style={styles.sleepnum}>9h 0m</Text>
+            <View style={styles.trebar}>
+              <View style={styles.trebarcontainer}>
+                <Text style={styles.trebarTitle}>Carbs</Text>
+                <Text style={styles.trebarValue}>12</Text>
+              </View>
 
-            <DateSelector
-              date={this.state.date}
-              refs={this}
-             />
+              <View style={styles.trebarcontainer}>
+                <Text style={styles.trebarTitle}>Protein</Text>
+                <Text style={styles.trebarValue}>13</Text>
+              </View>
+
+              <View style={styles.trebarcontainer}>
+                <Text style={styles.trebarTitle}>Fat</Text>
+                <Text style={styles.trebarValue}>14</Text>
+              </View>
+            </View>
           </View>
 
         </Header>
         <ScrollView style={styles.contentContainer}>
-          <Sleep />
+          <Food />
         </ScrollView>
       </MenuPage>
     );
@@ -130,6 +139,40 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  centerimg: {
+    height: 175,
+    width: 175,
+  },
+
+  trebar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection:'row',
+    marginTop: 10
+  },
+  trebarcontainer: {
+    flex: 0.333333333,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  trebarTitle: {
+    fontSize: 18,
+    color: 'white'
+  },
+  trebarValue: {
+    fontSize: 15,
+    color: 'white'
+  },
+
+  centerImageTextWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  centerImageText: {
+    fontSize: 25,
+    backgroundColor: 'transparent',
   },
   container: {
     flex: 1,
