@@ -62,7 +62,7 @@ class MenuPage extends Component {
   render() {
     const MenuComponent = (
 
-      <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
+      <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 0}}>
         <List containerStyle={{marginBottom: 20}}>
         {
           list.map((item, i) => (

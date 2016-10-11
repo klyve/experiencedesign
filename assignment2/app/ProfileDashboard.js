@@ -95,10 +95,12 @@ class ProfileDashboard extends Component {
       })
   }
 
+
+
   render () {
 
     return (
-      <View>
+      <View style={styles.contentContainer}>
       <MenuPage
         state={this.props.app.state.toggled}
         navigator={this.props.navigator}
@@ -150,6 +152,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    backgroundColor: 'white'
   },
   centerContainer: {
     flex: 0.8,

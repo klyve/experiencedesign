@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  TouchableHighlight,
 } from 'react-native';
 
 import {
@@ -24,10 +25,17 @@ class Dashboard extends Component {
     this.state = {date: 12}
   }
 
+  action(type) {
+    this.props.itemNavigate(type)
+  }
+
   render() {
     return(
       <View>
         <View style={styles.dashboardContainer} >
+
+        <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('') }>
+          <View>
           <Block right bottom>
             <View style={styles.blockText}>
               <Text style={styles.title}>Steps</Text>
@@ -41,6 +49,11 @@ class Dashboard extends Component {
               progress={50}
             />
           </Block>
+        </View>
+      </TouchableHighlight>
+
+      <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('activity') }>
+        <View>
           <Block bottom>
             <View style={styles.blockText}>
               <Text style={styles.title}>Activity</Text>
@@ -55,7 +68,13 @@ class Dashboard extends Component {
             />
           </Block>
         </View>
+      </TouchableHighlight>
+
+        </View>
         <View style={styles.dashboardContainer} >
+
+      <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('food') }>
+        <View>
           <Block right>
             <View style={styles.blockText}>
               <Text style={styles.title}>Calories</Text>
@@ -69,6 +88,11 @@ class Dashboard extends Component {
               progress={80}
             />
           </Block>
+        </View>
+      </TouchableHighlight>
+
+      <TouchableHighlight style={styles.touchstyle} onPress={ () => this.action('sleep') }>
+        <View>
           <Block>
             <View style={styles.blockText}>
               <Text style={styles.title}>Sleep</Text>
@@ -82,6 +106,9 @@ class Dashboard extends Component {
               progress={90}
             />
           </Block>
+        </View>
+      </TouchableHighlight>
+
         </View>
       </View>
     );
@@ -104,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   center: {
-    width: 90,
+    width: 110,
     height: 90
   },
   dashboardContainer: {
@@ -114,7 +141,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection:'row',
     flexWrap:'wrap'
-  }
+  },
+  touchstyle: {
+    flex: 1,
+  },
 });
 
 export default Dashboard

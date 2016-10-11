@@ -94,6 +94,16 @@ class AppDashboard extends Component {
         id: pid
       })
   }
+  itemNavigate(item) {
+    this.props.app.setState({
+      toggled: false
+    })
+    if(item) {
+      this.props.navigator.push({
+        id: item
+      })
+    }
+  }
 
   render () {
 
@@ -132,7 +142,7 @@ class AppDashboard extends Component {
           </View>
 
         </Header>
-        <Dashboard />
+        <Dashboard  itemNavigate={ (i) => this.itemNavigate(i)}/>
       </MenuPage>
       </ScrollView>
     )
