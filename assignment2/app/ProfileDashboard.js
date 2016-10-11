@@ -19,7 +19,7 @@ import { SideMenu, List, ListItem, Button, Icon } from 'react-native-elements'
 
 import {
   DateSelector,
-  Dashboard,
+  Profile,
   MenuPage
 } from './modules'
 
@@ -98,7 +98,7 @@ class ProfileDashboard extends Component {
   render () {
 
     return (
-      <ScrollView>
+      <View>
       <MenuPage
         state={this.state.toggled}
         navigator={this.props.navigator}
@@ -120,20 +120,18 @@ class ProfileDashboard extends Component {
               style={styles.center}
             >
               <View style={styles.centerImageTextWrapper}>
-                <Text style={styles.centerImageText}>1257</Text>
-                <Text style={styles.centerImageText}>Points</Text>
+                <Text style={styles.centerImageText}>17</Text>
+                <Text style={styles.centerImageText}>level</Text>
               </View>
             </Image>
-            <DateSelector
-              date={this.state.date}
-              refs={this}
-             />
           </View>
 
         </Header>
-        <Dashboard />
+        <View style={styles.contentContainer}>
+          <Profile />
+        </View>
       </MenuPage>
-      </ScrollView>
+      </View>
     )
   }
 }
@@ -148,6 +146,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  contentContainer: {
+    flex: 1,
   },
   centerContainer: {
     flex: 0.8,
